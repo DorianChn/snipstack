@@ -1,0 +1,40 @@
+{
+  "expo": {
+    "name": "SnipStack",
+    "slug": "snipstack",
+    "version": "0.1.0",
+    "orientation": "portrait",
+    "scheme": "snipstack",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "automatic",
+    "backgroundColor": "#14142B",
+    "splash": {
+      "image": "./assets/icon.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#14142B"
+    },
+    "ios": {
+      "bundleIdentifier": "com.snipstack.app",
+      "supportsTablet": true,
+      "infoPlist": {
+        "NSPhotoLibraryUsageDescription": "SnipStack needs photo access so you can save images as snippets."
+      }
+    },
+    "android": {
+      "package": "com.snipstack.app",
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/icon.png",
+        "backgroundColor": "#14142B"
+      }
+    },
+    "plugins": [
+      [
+        "expo-image-picker",
+        {
+          "photosPermission": "SnipStack needs photo access so you can save images as snippets."
+        }
+      ],
+      "expo-document-picker"
+    ]
+  }
+}

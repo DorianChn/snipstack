@@ -1,0 +1,35 @@
+{
+  "name": "snipstack",
+  "version": "0.1.0",
+  "description": "SnipStack - one fast, focused place to save and retrieve reusable snippets.",
+  "main": "index.ts",
+  "scripts": {
+    "start": "expo start --dev-client",
+    "android": "expo run:android",
+    "ios": "expo run:ios",
+    "ts:check": "tsc --noEmit"
+  },
+  "dependencies": {
+    "expo": "*",
+    "react": "*",
+    "react-native": "*",
+    "@expo/vector-icons": "*",
+    "@react-navigation/native": "*",
+    "@react-navigation/native-stack": "*",
+    "@react-navigation/bottom-tabs": "*",
+    "react-native-screens": "*",
+    "react-native-safe-area-context": "*",
+    "zustand": "*",
+    "@react-native-async-storage/async-storage": "*",
+    "react-native-purchases": "*",
+    "expo-clipboard": "*",
+    "expo-image-picker": "*",
+    "expo-document-picker": "*",
+    "expo-haptics": "*"
+  },
+  "devDependencies": {
+    "typescript": "*",
+    "@types/react": "*"
+  },
+  "private": true
+}
