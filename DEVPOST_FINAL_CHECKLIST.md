@@ -1,77 +1,58 @@
 # SnipStack × Shipaton 2026 — 提交收尾清单
 
-> 更新：2026-09-18 20:35 GMT+8 ｜ 截止：**2026-10-01 14:45 GMT+8**（还剩 12 天）
-> 相比上一版：**视频已成品**（原「❌ 无成品」已解决）
+> 更新：2026-09-18 22:50 GMT+8 ｜ 截止：**2026-10-01 14:45 GMT+8**（还剩 12 天）
+> 👉 **要动手时直接看 `_shipaton\SUBMIT_PASTE_KIT.md`**（YouTube 元数据 + Devpost 逐栏文本，复制粘贴即可）。
 
-## 一、当前状态（已核验，勿重复操作）
+## 一、当前状态（已核验）
 
 | 项目 | 状态 |
 |---|---|
-| 手机 `7a66c12a`（Redmi 23013RK75C / Android 15） | ✅ 在线 |
-| App 安装 | ✅ 已装 `com.snipstack.app` v0.1.0（19:45 重装），MainActivity 前台，logcat 无 FATAL |
-| **演示视频** | ✅ **已成品** `marketing/snipstack-demo.mp4` — 1:56（115.9s）、1080×2400、h264+aac |
-| 视频旁白 | ✅ 有（mean −24.1 dB，句间自然停顿）；**英文字幕已烧录进画面** |
-| gallery 展示图 | ✅ 4 张，均 1536×1024 = 精确 3:2 |
-| SUBMISSION / DEVPOST_STORY / VIDEO_SCRIPT | ✅ 齐备 |
-| 仓库 | ✅ `github.com/DorianChn/snipstack` **public + MIT**，origin/main = `d9003ae` |
-| 远端 YouTube 链接 | ❌ 还没有（本轮已核实全仓库无任何 youtube 链接） |
-| Devpost 提交 | ❌ 未提交 |
+| 手机 `7a66c12a`（Redmi / Android 15） | ✅ 在线，app 可运行、无 FATAL |
+| **演示视频** | ✅ **终稿 v2** — 113.9s、1080×2400、h264+aac、3.44MB、字幕已烧录、英文旁白已混入 |
+| ↳ 终稿副本（md5 相同 `390e9347…`） | ① `SnipStack/marketing/snipstack-demo.mp4` ② `demo/snipstack-final-v2.mp4` ③ 桌面 `SnipStack-演示视频-2分钟.mp4` |
+| 视频内容 | ✅ 覆盖全部功能；支付墙显示 **RevenueCat 真实商品**（Monthly US$9.99 / Yearly US$79.99 / Lifetime US$99.99） |
+| RevenueCat 项目 | ✅ `projb4f9a730`，Test Store key 已接入（本地 `purchases.keys.ts`，**已 gitignore**） |
+| 连线证据 | ✅ `[RC-PROBE] offering=default packages=$rc_monthly\|$rc_annual\|$rc_lifetime` |
+| gallery 展示图 | ✅ 4 张，1536×1024（精确 3:2） |
+| 仓库 | ✅ `github.com/DorianChn/snipstack` public + MIT，远端 main = `ecfb993` |
+| Devpost 已填 | ✅ name / pitch / story / built-with / try-it-out / 平台=Android / 学生邮箱 / RC Project ID |
+| **YouTube 链接** | ❌ 还没上传 |
+| **Devpost 提交** | ❌ 未 Submit |
 
-## 二、距离提交只剩 2 件事（约 10 分钟）
+## 二、只剩 2 件事
+
+> 逐字段的现成文本见 `_shipaton\SUBMIT_PASTE_KIT.md`，下面只是概览。
 
 ### ① 传 YouTube（unlisted）
-1. 上传 `marketing/snipstack-demo.mp4`（已是终稿，**不要再剪**）
-2. 可见性选 **Unlisted**
-3. 描述里放仓库链接：`https://github.com/DorianChn/snipstack`
-4. **不要额外上传 `demo-subtitles.srt`** —— 画面里字幕已烧录，再挂一份会双重字幕
+1. 上传 `C:\Users\36712\Desktop\SnipStack-演示视频-2分钟.mp4`（终稿，**不要再剪**）
+   - 若该副本被清掉，用 `SnipStack\marketing\snipstack-demo.mp4`（同一文件，md5 `390e9347c43ec1f5fe96ad5625c19ac0`）
+2. 可见性 **Unlisted**
+3. 描述放仓库链接 `https://github.com/DorianChn/snipstack`
+4. **不要**再额外上传字幕文件（字幕已烧进画面）
 
-### ② Devpost 填表（按此顺序，直接整段复制）
+### ② Devpost 收尾 → Submit
+- Video demo link ← 第 ① 步链接
+- 奖项勾选：**Next Gen Award**、**Influencer Award — Productivity**、**RevenueCat Design Award**、**HAMM Award**
+- 点 **Submit**
 
-| Devpost 栏位 | 粘贴来源 |
-|---|---|
-| Project name | `SnipStack` |
-| Elevator pitch | `SUBMISSION.md` → 「Elevator pitch」段（138 字符，限 200） |
-| Thumbnail | `marketing/gallery-1-inbox.png` |
-| **Video demo link** | 第 ① 步的 YouTube 链接 |
-| **About the project** | `DEVPOST_STORY.md` 全文（**跳过第 1 行说明**，从 `## Inspiration` 开始） |
-| Gallery | `gallery-1-inbox` → `gallery-2-search` → `gallery-3-detail` → `gallery-4-paywall` |
-| Built with | `expo` `react-native` `typescript` `revenuecat` `zustand` `react-navigation` `async-storage` |
-| Try it out | `https://github.com/DorianChn/snipstack` |
+## 三、诚实性说明（保持）
 
-**勾选奖项**（4 个）：
-- [ ] **Next Gen Award**（学生；评审依据 = 视频 + 开源代码）
-- [ ] **Influencer Award — Productivity**
-- [ ] **RevenueCat Design Award**
-- [ ] **HAMM Award**
+- 视频为 app 的**脚本化演示模式**录制（真机、真界面、真 RevenueCat 数据，操作由程序触发）。
+  `src/demo/flags.ts` 里的 `DEMO_AUTOPLAY` 在仓库中**默认 false**，README 已说明用途 —— 评委可复现，无需隐瞒。
+- 未上架任何商店（Devpost 三个商店 URL 栏留空，走 Next Gen 通道）。
+- 未演示真实付款完成流程（没有商店商品），视频旁白也未作此声称。
 
-→ 最后 **Submit**。
+## 四、手机上的 App 现状（不影响提交，但要知道）
 
-## 三、⚠️ 仓库红线：有未提交的演示代码，**不要 push**
+- 机上跑的是 **debug 包**（`base.apk` 167,601,416 B，19:45 安装），**内部没有 JS bundle**，JS 靠 Metro 实时拉。
+- **Metro 现在已经不在监听 8081 了**（跑 `netstat -ano | grep LISTENING | grep 8081` 无输出）。
+  → 现在界面正常，只是因为 App 进程（PID 29849）还活着、bundle 还在内存里。
+  → **一旦 App 进程被杀 / 手机重启，再打开就是白屏**。
+- 想恢复：在 `SnipStack` 目录起 Metro，并补一次 `adb reverse tcp:8081 tcp:8081`（Bash 每次调用会重启 adb server，该反向映射会丢）。
+- 提交本身**不需要**这台手机 —— Devpost 只看视频 + 仓库。所以不必为它折腾，除非你还想加录镜头。
 
-工作区未提交改动（均已核实）：
+## 五、可选加分项
 
-| 文件 | 内容 | 处置 |
-|---|---|---|
-| `src/demo/flags.ts` | **`DEMO_AUTOPLAY = true`** — 文件注释明写 "MUST be false for any store release"；开启后 store 变 ephemeral（不读写 AsyncStorage） | 保持未提交 |
-| `src/screens/PaywallScreen.tsx` | `SHOW_DEMO_PRICING = true` — 硬编码 $19.99 / $2.99 假价格 | 保持未提交 |
-| `App.tsx` / `EditorScreen` / `SearchScreen` / `useSnippets.ts` | autoDemo 驱动脚手架 | 保持未提交 |
-| `src/demo/autoDemo.ts` | 免手动的 120s 脚本演示（正是视频的走位来源） | 保持未提交 |
-
-**已推送的仍是 `d9003ae`（干净状态）—— 这是评委看到的那一份，正确。**
-
-> 视频里的价格卡带 "Demo pricing — no store products are connected in this build." 小字，
-> 属于如实标注，可以留。但那份代码**不能**进开源仓库，否则会被读成演示造假。
-
-## 四、可选加分项（非必须）
-
-- **给仓库挂 GitHub Release + `app-release.apk`**（36.4MB，16:38 编译，**早于**所有 demo 改动 = 干净产物）。
-  理由：Devpost「Try it out」只能链仓库，评委无法真机体验；挂个 APK 能让人真的装上。
-  ⚠️ 这是对外可见动作，需你确认后再做。
-- 视频结尾是 App 首页 + 字幕卡（`SnipStack - open source, MIT. Built by a student for Shipaton 2026`），
-  **没有出现 GitHub 仓库画面**。评委拿到的仓库链接靠 Devpost 栏位与视频描述传递，记得两处都放。
-
-## 五、诚实性红线（重申）
-
-- `purchases.keys.ts` 里仍是 `appl_REPLACE…` / `goog_REPLACE…` 占位符 → **没有真实 RevenueCat 项目**
-- 不要声称已跑通真实沙盒购买（视频旁白也没这么说，保持现状即可）
-- 不要伪造 Devpost 链接、不要代提交
+- **挂 GitHub Release + APK**：让评委真机体验。
+  ⚠️ 现有 `app-release.apk` 是早期产物，与当前代码不一致，**要用必须先重新构建**；且这是对外可见动作，需用户确认。
+- 若愿意发一条 build-in-public 内容（掘金/X），可补 Devpost 的 Build in Public 两栏，多一个奖项机会。

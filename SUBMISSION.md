@@ -34,8 +34,8 @@ SnipStack is a single inbox for reusable snippets:
 - **Two-tap retrieval** — open a snippet, hit "Copy to clipboard", get haptic
   confirmation. A use-counter quietly shows which snippets earn their keep.
 - **Free vs Pro** — the free plan holds 15 snippets (enough to feel the
-  workflow). SnipStack Pro (monthly/yearly, powered by RevenueCat) removes the
-  limit.
+  workflow). SnipStack Pro (monthly, yearly, or lifetime — powered by
+  RevenueCat) removes the limit.
 
 ## How I built it
 
@@ -43,7 +43,7 @@ SnipStack is a single inbox for reusable snippets:
 - **Zustand + AsyncStorage** for local-first, offline-by-default persistence —
   no account, no sync latency, nothing between you and your snippets.
 - **RevenueCat `react-native-purchases`** drives the entire paywall: a `pro`
-  entitlement, a default Offering with monthly + yearly packages, restore
+  entitlement, a default Offering with monthly / yearly / lifetime packages, restore
   purchases, and real-time entitlement updates via
   `addCustomerInfoUpdateListener`. Gating happens exactly once — at the moment
   a free user tries to save snippet #16 — where the value is most tangible.
