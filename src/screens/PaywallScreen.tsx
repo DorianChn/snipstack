@@ -13,6 +13,7 @@ import { Ionicons } from "@expo/vector-icons";
 import { useNavigation, useRoute } from "@react-navigation/native";
 import { PurchasesOffering, PurchasesPackage } from "react-native-purchases";
 import {
+  DEMO_UNLOCK,
   fetchCurrentOffering,
   purchasePackage,
   restorePurchases,
@@ -46,7 +47,9 @@ export default function PaywallScreen() {
   }, []);
 
   useEffect(() => {
-    if (isPro) navigation.goBack();
+    // DEMO_UNLOCK keeps Pro on but must not slam the paywall shut:
+    // the screen stays viewable so it can be shown on camera.
+    if (isPro && !DEMO_UNLOCK) navigation.goBack();
   }, [isPro]);
 
   const buy = async (pkg: PurchasesPackage) => {

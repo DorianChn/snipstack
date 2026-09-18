@@ -50,7 +50,23 @@
 
 ## 录制清单
 
-- [ ] iOS 模拟器或真机录屏（1080p+, 浅色模式为主）
-- [ ] 剪映/CapCut 剪到 3 分钟内，加字幕
+- [ ] **安卓真机录屏**（Redmi 23013RK75C / Android 15，adb 已连通 `7a66c12a`），
+      用系统自带「屏幕录制」1080p，浅色模式为主
+- [ ] 录制前置：确认 `DEMO_UNLOCK = false`（理由见下节）
+- [ ] 剪映/CapCut 剪到 3 分钟内，加字幕（旁白用英文）
 - [ ] 上传 YouTube（unlisted）→ 链接填入 Devpost "Demo video"
 - [ ] 视频描述里放 GitHub 仓库链接
+
+## 录制配置说明（重要）
+
+`src/services/purchases.ts` 里的 `DEMO_UNLOCK` 决定录屏时支付墙能否出现：
+
+| 取值 | 实际效果 | 用途 |
+|---|---|---|
+| `false`（**录制用这个**） | 免费限额真实生效，存满 15 条后第 16 条**自动弹出支付墙**，freemium 卖点可见 | 1:50–2:25 变现段 |
+| `true` | Pro 永久解锁，首页/设置页的 Upgrade 入口被 `!isPro` 隐藏，**支付墙无法从 UI 打开** | 仅用于演示"已解锁"状态 |
+
+> 当前 `purchases.keys.ts` 里的 key 仍是 `REPLACE` 占位符，未接真实 RevenueCat，
+> 所以支付墙会显示"待配置 offering"文案而不是真实价格按钮。
+> 旁白照实说「整条订阅链路（offerings / purchase / restore / entitlement 实时更新）
+> 都跑在 RevenueCat SDK 上」，**不要声称已跑通沙盒购买**。

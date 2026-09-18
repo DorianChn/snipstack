@@ -1,0 +1,80 @@
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  width: 1536px; height: 1024px;
+  font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
+  background: #EEF0F8;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 60px 96px; overflow: hidden;
+}
+.left { max-width: 560px; }
+.kicker { color: #5B5BD6; font-weight: 700; letter-spacing: 2.5px; font-size: 15px; text-transform: uppercase; }
+h1 { font-size: 54px; line-height: 1.12; color: #14141A; margin: 16px 0 20px; font-weight: 800; letter-spacing: -1.2px; }
+.sub { font-size: 21px; color: #6B6B76; line-height: 1.55; }
+.badge {
+  display: inline-block; background: #fff; border: 1px solid #E6E6EB; color: #5B5BD6;
+  padding: 9px 18px; border-radius: 999px; font-size: 14.5px; font-weight: 600; margin-top: 30px;
+}
+.phone {
+  width: 424px; height: 884px; background: #fff; border-radius: 52px;
+  border: 11px solid #14141A; overflow: hidden; position: relative; flex: none;
+  box-shadow: 0 40px 80px rgba(20, 20, 40, .22);
+}
+.notch { position: absolute; top: 12px; left: 50%; transform: translateX(-50%); width: 118px; height: 26px; background: #14141A; border-radius: 20px; z-index: 5; }
+.p-screen { position: absolute; inset: 0; background: #F7F7F9; padding: 46px 14px 0; display: flex; flex-direction: column; }
+.statusbar { height: 20px; display: flex; justify-content: space-between; align-items: center; padding: 0 16px; font-size: 12.5px; color: #14141A; font-weight: 600; margin-bottom: 8px; }
+.app-title { font-size: 29px; font-weight: 800; padding: 4px 8px 2px; letter-spacing: -0.5px; color: #14141A; }
+.app-sub { font-size: 13px; color: #6B6B76; padding: 0 8px 12px; }
+.searchbar {
+  background: #fff; border: 1px solid #E6E6EB; border-radius: 12px; padding: 11px 13px;
+  display: flex; gap: 8px; align-items: center; color: #9A9AA5; font-size: 14px; margin: 0 6px 12px;
+}
+.searchbar .q { color: #14141A; font-weight: 500; }
+.cursor { width: 2px; height: 17px; background: #5B5BD6; }
+.section { font-size: 11.5px; font-weight: 700; letter-spacing: 1.4px; color: #8B8B96; text-transform: uppercase; margin: 8px 10px; }
+.card { background: #fff; border: 1px solid #E6E6EB; border-radius: 14px; padding: 12px 13px; margin: 0 6px 10px; }
+.card-row { display: flex; gap: 11px; align-items: center; }
+.kindicon { width: 37px; height: 37px; border-radius: 10px; background: #EDEDFB; display: flex; align-items: center; justify-content: center; flex: none; }
+.card-title { font-size: 15px; font-weight: 700; color: #14141A; }
+.card-prev { font-size: 12.5px; color: #6B6B76; margin-top: 2px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 265px; }
+.meta { display: flex; gap: 6px; align-items: center; margin: 9px 2px 0 48px; }
+.tag { background: #EDEDFB; color: #5B5BD6; font-size: 11px; padding: 3px 8px; border-radius: 6px; font-weight: 600; }
+.time { font-size: 11px; color: #9A9AA5; margin-left: auto; }
+.fab {
+  position: absolute; right: 20px; bottom: 84px; width: 56px; height: 56px; border-radius: 28px;
+  background: #5B5BD6; color: #fff; font-size: 32px; font-weight: 300;
+  display: flex; align-items: center; justify-content: center; box-shadow: 0 10px 22px rgba(91, 91, 214, .4);
+}
+.tabbar { position: absolute; bottom: 0; left: 0; right: 0; height: 66px; background: #fff; border-top: 1px solid #E6E6EB; display: flex; z-index: 4; }
+.tab { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; font-size: 10.5px; color: #8B8B96; gap: 4px; }
+.tab.active { color: #5B5BD6; font-weight: 700; }
+.chips { display: flex; gap: 8px; margin: 0 6px 14px; }
+.chip { border: 1px solid #E6E6EB; background: #fff; color: #14141A; border-radius: 16px; padding: 6px 13px; font-size: 12.5px; }
+.chip.on { background: #5B5BD6; border-color: #5B5BD6; color: #fff; font-weight: 600; }
+.topbar { display: flex; justify-content: space-between; align-items: center; padding: 4px 10px 14px; }
+.d-title { font-size: 26px; font-weight: 800; padding: 4px 8px; letter-spacing: -0.4px; color: #14141A; }
+.d-meta { font-size: 12.5px; color: #6B6B76; padding: 4px 8px 14px; }
+.content-box { background: #fff; border: 1px solid #E6E6EB; border-radius: 14px; padding: 15px; margin: 0 6px; font-size: 14.5px; line-height: 1.65; color: #14141A; }
+.d-tags { display: flex; gap: 8px; margin: 14px 8px; }
+.copy-btn {
+  position: absolute; left: 16px; right: 16px; bottom: 24px; background: #5B5BD6; color: #fff;
+  border-radius: 14px; padding: 15px; text-align: center; font-size: 15.5px; font-weight: 700;
+  display: flex; align-items: center; justify-content: center; gap: 8px;
+}
+.toast {
+  position: absolute; left: 50%; transform: translateX(-50%); bottom: 92px; background: #14141A; color: #fff;
+  font-size: 13px; padding: 9px 18px; border-radius: 999px; font-weight: 600;
+}
+.x-btn { margin: 6px 10px 0 auto; width: 32px; height: 32px; border-radius: 16px; background: #ECECF1; color: #6B6B76; display: flex; align-items: center; justify-content: center; font-size: 15px; }
+.hero { width: 74px; height: 74px; border-radius: 37px; background: #EDEDFB; display: flex; align-items: center; justify-content: center; margin: 12px auto 12px; }
+.pw-title { font-size: 26px; font-weight: 800; text-align: center; color: #14141A; letter-spacing: -0.4px; }
+.pw-sub { font-size: 14px; color: #6B6B76; text-align: center; margin: 6px 0 16px; }
+.feat { display: flex; gap: 10px; align-items: center; margin: 0 14px 11px; font-size: 14px; color: #14141A; font-weight: 500; }
+.check { width: 22px; height: 22px; border-radius: 11px; background: #EDEDFB; color: #5B5BD6; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 800; flex: none; }
+.pkg { position: relative; background: #fff; border: 1.5px solid #E6E6EB; border-radius: 14px; padding: 13px 15px; margin: 0 8px 10px; display: flex; align-items: center; justify-content: space-between; }
+.pkg.hot { border-color: #5B5BD6; }
+.pkg-name { font-size: 14.5px; font-weight: 700; color: #14141A; }
+.pkg-note { font-size: 11.5px; color: #6B6B76; margin-top: 2px; }
+.pkg-price { font-size: 15px; font-weight: 800; color: #14141A; }
+.best { position: absolute; top: -10px; right: 14px; background: #5B5BD6; color: #fff; font-size: 10px; font-weight: 800; letter-spacing: 1px; padding: 3px 9px; border-radius: 8px; }
+.restore { text-align: center; font-size: 12.5px; color: #5B5BD6; font-weight: 600; margin-top: 8px; }
+.fine { text-align: center; font-size: 10px; color: #9A9AA5; margin-top: 8px; line-height: 1.5; padding: 0 20px; }
