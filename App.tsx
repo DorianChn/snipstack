@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { StatusBar, View, ActivityIndicator, useColorScheme } from "react-native";
+import { StatusBar, View, ActivityIndicator, useColorScheme, LogBox } from "react-native";
 import {
   NavigationContainer,
   DefaultTheme,
@@ -9,6 +9,7 @@ import { SafeAreaProvider } from "react-native-safe-area-context";
 import RootNavigator from "./src/navigation";
 import { useSnippets } from "./src/store/useSnippets";
 import { initPurchases } from "./src/services/purchases";
+import { DEMO_AUTOPLAY, navigationRef, runAutoDemo } from "./src/demo/autoDemo";
 import { lightTheme, darkTheme } from "./src/theme";
 
 export default function App() {
@@ -20,6 +21,15 @@ export default function App() {
     load();
     initPurchases();
   }, [load]);
+
+  useEffect(() => {
+    if (DEMO_AUTOPLAY) {
+      // Keep the frame clean for the submission video capture.
+      LogBox.ignoreAllLogs(true);
+      // Hands-free scripted demo for the submission video (dev only).
+      runAutoDemo().catch(() => {});
+    }
+  }, []);
 
   const t = scheme === "dark" ? darkTheme : lightTheme;
   const base = scheme === "dark" ? DarkTheme : DefaultTheme;
@@ -52,7 +62,7 @@ export default function App() {
 
   return (
     <SafeAreaProvider>
-      <NavigationContainer theme={navTheme}>
+      <NavigationContainer theme={navTheme} ref={navigationRef}>
         <StatusBar barStyle={scheme === "dark" ? "light-content" : "dark-content"} />
         <RootNavigator />
       </NavigationContainer>

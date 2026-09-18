@@ -19,6 +19,17 @@ instantly searchable.
 - **Freemium via RevenueCat** — free plan caps at 15 snippets; **SnipStack Pro**
   (monthly / yearly subscription) removes the limit.
 
+## Demo mode (used for the submission video)
+
+`src/demo/flags.ts` exposes a single `DEMO_AUTOPLAY` switch. When `true` the app
+launches a scripted, hands-free walkthrough of every feature (create → pin →
+search → tag filter → detail → copy → paywall → settings) and makes the snippet
+store ephemeral so each run starts clean. It exists because some Android OEMs
+block synthetic touch input over adb, so the demo had to drive itself.
+
+It is **off by default** in this repo — flip it to `true` only if you want the
+self-running demo. The capture pipeline lives in `marketing/`.
+
 ## Tech stack
 
 - [Expo](https://expo.dev) + React Native (TypeScript)

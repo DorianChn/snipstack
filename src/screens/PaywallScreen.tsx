@@ -29,6 +29,19 @@ const FEATURES = [
   { icon: "heart-outline", text: "Support an indie student developer" },
 ] as const;
 
+/**
+ * DEV ONLY — set to false before any store release.
+ * When the app runs without a RevenueCat offering (no store connection yet),
+ * the paywall would otherwise be an empty screen. This renders clearly-labelled
+ * placeholder plans so the paywall design can be demoed on camera.
+ */
+const SHOW_DEMO_PRICING = false;
+
+const DEMO_PACKAGES = [
+  { id: "demo_annual", title: "Annual", desc: "Best value · $1.67 / month", price: "$19.99" },
+  { id: "demo_monthly", title: "Monthly", desc: "Cancel anytime", price: "$2.99" },
+];
+
 export default function PaywallScreen() {
   const navigation = useNavigation<any>();
   const route = useRoute<any>();
@@ -109,6 +122,26 @@ export default function PaywallScreen() {
 
         {loading ? (
           <ActivityIndicator color={theme.accent} style={{ marginTop: 32 }} />
+        ) : packages.length === 0 && SHOW_DEMO_PRICING ? (
+          <>
+            {DEMO_PACKAGES.map((p) => (
+              <TouchableOpacity
+                key={p.id}
+                style={[styles.pkgBtn, { backgroundColor: theme.card, borderColor: theme.accent }]}
+                onPress={restore}
+                activeOpacity={0.8}
+              >
+                <View>
+                  <Text style={[styles.pkgTitle, { color: theme.text }]}>{p.title}</Text>
+                  <Text style={[styles.pkgDesc, { color: theme.subtext }]}>{p.desc}</Text>
+                </View>
+                <Text style={[styles.pkgPrice, { color: theme.accent }]}>{p.price}</Text>
+              </TouchableOpacity>
+            ))}
+            <Text style={[styles.noOfferings, { color: theme.subtext }]}>
+              Demo pricing — no store products are connected in this build.
+            </Text>
+          </>
         ) : packages.length === 0 ? (
           <Text style={[styles.noOfferings, { color: theme.subtext }]}>
             Subscription packages will appear here once the RevenueCat offering

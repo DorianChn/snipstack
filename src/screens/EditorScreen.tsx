@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   View,
   Text,
@@ -18,6 +18,7 @@ import * as ImagePicker from "expo-image-picker";
 import * as DocumentPicker from "expo-document-picker";
 import { useSnippets, FREE_LIMIT } from "../store/useSnippets";
 import { usePro } from "../services/purchases";
+import { DEMO_AUTOPLAY } from "../demo/flags";
 import { useTheme } from "../theme";
 import { SnippetKind } from "../types";
 
@@ -85,6 +86,54 @@ export default function EditorScreen() {
     }
     navigation.goBack();
   };
+
+  // DEV ONLY: in the scripted demo the capture screen is pre-filled and
+  // "saves" itself, so the video shows the create flow without needing
+  // synthetic touch input (blocked by some OEMs over adb).
+  useEffect(() => {
+    const demoKind = route.params?.demo;
+    if (!DEMO_AUTOPLAY || !demoKind || existing) return;
+
+    const preset =
+      demoKind === "link"
+        ? {
+            kind: "link" as const,
+            title: "Design system link",
+            content: "https://ui.example.com/tokens",
+            tags: ["design", "work"],
+          }
+        : {
+            kind: "text" as const,
+            title: "Client standup agenda",
+            content: "1. Blockers  2. Timeline  3. Next deliverable",
+            tags: ["work", "meeting"],
+          };
+
+    // Land on Text first so the type selector is visible, then switch to the
+    // demoed kind — this is what a user picking a type looks like.
+    setKind("text");
+    setTitle(preset.title);
+    setContent(preset.content);
+    setTagsText(preset.tags.join(", "));
+
+    const swap = setTimeout(() => setKind(preset.kind), 4000);
+    const commit = setTimeout(() => {
+      add({
+        kind: preset.kind,
+        title: preset.title,
+        content: preset.content,
+        tags: preset.tags,
+        pinned: false,
+      });
+      navigation.goBack();
+    }, 9500);
+
+    return () => {
+      clearTimeout(swap);
+      clearTimeout(commit);
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <SafeAreaView style={[styles.safe, { backgroundColor: theme.bg }]} edges={["top"]}>

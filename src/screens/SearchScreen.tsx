@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import {
   View,
   TextInput,
@@ -10,7 +10,7 @@ import {
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Ionicons } from "@expo/vector-icons";
-import { useNavigation } from "@react-navigation/native";
+import { useNavigation, useRoute } from "@react-navigation/native";
 import { useSnippets, useAllTags } from "../store/useSnippets";
 import { useTheme } from "../theme";
 import SnippetCard from "../components/SnippetCard";
@@ -18,11 +18,20 @@ import EmptyState from "../components/EmptyState";
 
 export default function SearchScreen() {
   const navigation = useNavigation<any>();
+  const route = useRoute<any>();
   const { theme } = useTheme();
   const snippets = useSnippets((s) => s.snippets);
   const allTags = useAllTags();
   const [query, setQuery] = useState("");
   const [activeTag, setActiveTag] = useState<string | null>(null);
+
+  useEffect(() => {
+    if (typeof route.params?.q === "string") setQuery(route.params.q);
+    if (typeof route.params?.tag === "string") {
+      setQuery("");
+      setActiveTag(route.params.tag);
+    }
+  }, [route.params?.q, route.params?.tag]);
 
   const results = useMemo(() => {
     const q = query.trim().toLowerCase();

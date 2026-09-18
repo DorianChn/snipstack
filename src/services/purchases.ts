@@ -67,6 +67,17 @@ export async function initPurchases(): Promise<void> {
     Purchases.addCustomerInfoUpdateListener((updated) =>
       usePro.getState().setFromInfo(updated)
     );
+    // Dev probe: confirms the RevenueCat catalogue is reachable from the device.
+    Purchases.getOfferings()
+      .then((o) =>
+        console.log(
+          "[RC-PROBE] offering=" +
+            (o.current?.identifier ?? "none") +
+            " packages=" +
+            (o.current?.availablePackages.map((p) => p.identifier).join("|") || "none")
+        )
+      )
+      .catch((e) => console.log("[RC-PROBE] error " + e?.message));
   } catch {
     usePro.setState({ ready: true, isPro: false });
   }

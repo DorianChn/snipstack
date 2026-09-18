@@ -1,0 +1,31 @@
+1
+00:00:00,000 --> 00:00:09,000
+Save anything reusable in under 5 seconds: title, content, tags.
+
+2
+00:00:09,000 --> 00:00:16,000
+Text, links, images, files - one inbox, no folders.
+
+3
+00:00:16,000 --> 00:00:28,000
+Free plan holds 15 snippets. Pinned snippets float to the top.
+
+4
+00:00:28,000 --> 00:00:37,000
+Live search filters titles, content and tags as you type.
+
+5
+00:00:37,000 --> 00:00:58,000
+Open, copy, haptic confirmation - two taps to paste anywhere.
+
+6
+00:00:58,000 --> 00:01:10,000
+At 15 snippets the free plan ends. SnipStack Pro removes the limit, powered by the RevenueCat SDK.
+
+7
+00:01:10,000 --> 00:01:22,000
+Settings: entitlement state and restore purchases, all driven by RevenueCat.
+
+8
+00:01:22,000 --> 00:01:35,000
+SnipStack - open source under MIT, built by a student for Shipaton 2026.
