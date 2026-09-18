@@ -55,7 +55,8 @@ npx expo run:ios        # or: npx expo run:android
 3. Create two products, e.g. `snipstack_pro_monthly` and
    `snipstack_pro_annual`, attach them to the `pro` entitlement, and add both
    to the **default Offering**.
-4. Paste your public SDK keys into `src/services/purchases.ts`
+4. Paste your public SDK keys into `src/services/purchases.keys.ts`
+   (copy `purchases.keys.example.ts`; the real file is gitignored)
    (`appl_...` for iOS, `goog_...` for Android).
 5. For simulator testing, use a StoreKit Configuration file or RevenueCat's
    sandbox testing docs.

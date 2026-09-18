@@ -7,3 +7,4 @@ build/
 ios/
 android/
 .env
+src/services/purchases.keys.ts

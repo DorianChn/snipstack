@@ -6,6 +6,10 @@ import Purchases, {
   PurchasesPackage,
   LOG_LEVEL,
 } from "react-native-purchases";
+import {
+  REVENUECAT_IOS_KEY,
+  REVENUECAT_ANDROID_KEY,
+} from "./purchases.keys";
 
 /**
  * RevenueCat setup:
@@ -13,13 +17,14 @@ import Purchases, {
  * 2. Create an entitlement named "pro"
  * 3. Create products (e.g. snipstack_pro_monthly / snipstack_pro_annual),
  *    attach them to the entitlement, and add them to the default Offering
- * 4. Paste your public SDK keys below
+ * 4. Copy purchases.keys.example.ts to purchases.keys.ts and paste your
+ *    public SDK keys there (that file is gitignored and never committed)
  */
 export const ENTITLEMENT_ID = "pro";
 
 const API_KEY = Platform.select({
-  ios: "appl_REPLACE_WITH_YOUR_IOS_KEY",
-  android: "goog_REPLACE_WITH_YOUR_ANDROID_KEY",
+  ios: REVENUECAT_IOS_KEY,
+  android: REVENUECAT_ANDROID_KEY,
   default: "",
 });
 
