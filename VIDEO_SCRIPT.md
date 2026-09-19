@@ -1,7 +1,9 @@
-# Next Gen Award — Demo Video Script (≤ 3 min)
+# Next Gen Award — Demo Video Script (成片 113.9s；官方上限是 **2 分钟**，不是 3 分钟)
 
-> Next Gen 评审依据：**视频 + 开源代码**。视频放 YouTube（unlisted 即可），
-> 链接贴到 Devpost。旁白用英文，下面是分镜 + 台词 + 中文备注。
+> Next Gen 评审依据：**视频 + 开源代码**（学生通道，无需上架商店、无需付费开发者账号）。
+> 官网原文两处硬约束：视频「Must be **no longer than 2 minutes** of essential footage」且
+> 「Must be uploaded to and **publicly visible** on YouTube or Vimeo」——所以可见性是 **Public**，
+> 不是 unlisted。旁白用英文，下面是分镜 + 台词 + 中文备注（时长为剪前的规划值，成片已精剪到 113.9s）。
 
 ## Shot list
 
@@ -53,9 +55,10 @@
 
 - [x] **安卓真机录屏**（Redmi 23013RK75C / Android 15，adb `7a66c12a`），1080×2400，浅色模式为主 — 已完成（由 `src/demo/autoDemo.ts` 脚本化自动演示录制）
 - [x] 录制前置：确认 `DEMO_UNLOCK = false`（理由见下节） — 已确认
-- [x] 剪映/CapCut 剪到 3 分钟内，加字幕（旁白用英文） — 已成片 113.9s，英文字幕已烧录
-- [ ] **上传 YouTube（unlisted）** → 链接填入 Devpost "Demo video"（描述里放仓库链接） ← **仅剩此项**
-- [ ] Devpost 勾奖项 + Submit（见 `DEVPOST_FINAL_CHECKLIST.md`）
+- [x] 剪映/CapCut 剪到 **2 分钟**内，加字幕（旁白用英文） — 成片 113.9s ✔（上限 120s）
+- [x] **上传 YouTube 并设为 Public** → 已嵌入 Devpost（video id `ZVwdq6t-tnM`）
+  - ⚠️ 待办：该视频标题还是 YouTube 默认的「2026年9月18日」、**描述为空** → 补法见 `_shipaton\SUBMIT_PASTE_KIT.md` 步骤 ①（不用重传）
+- [ ] Devpost 勾奖项 + Submit（见 `DEVPOST_FINAL_CHECKLIST.md`；页面另有 4 处待修）
 
 ## 录制配置说明（重要）
 

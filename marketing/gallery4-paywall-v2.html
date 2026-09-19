@@ -1,0 +1,50 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><link rel="stylesheet" href="mockup.css">
+<style>
+  /* v2 — every string below is copied from the shipping app / the recorded demo
+     (src/screens/PaywallScreen.tsx + tools/revenuecat offering read off the device):
+       features, subtitle, package tiers and prices, restore label, legal footnote.
+     Prices are the REAL RevenueCat products: Monthly US$9.99 / Yearly US$79.99 /
+     Lifetime US$99.99. v1 showed the DEMO_PACKAGES fallback ($2.99 / $19.99),
+     which contradicts the video and the RevenueCat dashboard. */
+  .hero { width: 80px; height: 80px; border-radius: 24px; }
+  .pkg { border-color: #5B5BD6; }
+  .pkg-price { color: #5B5BD6; }
+  .restore { color: #6B6B76; font-weight: 500; }
+  .feat { font-size: 13px; margin: 0 10px 10px; }
+  .check { width: 20px; height: 20px; border-radius: 10px; }
+  .fine { font-size: 9px; padding: 0 22px; line-height: 1.45; }
+  .pw-sub { margin: 6px 0 14px; }
+</style></head><body>
+<div class="left">
+  <div class="kicker">SnipStack · Monetization</div>
+  <h1>Freemium,<br>done right.</h1>
+  <div class="sub">The paywall appears exactly when value is proven — at snippet #16. Offerings, purchase, restore, and real-time entitlements all run on the RevenueCat SDK.</div>
+  <div class="badge">Free tier is genuinely useful, not a ransom</div>
+</div>
+<div class="phone"><div class="notch"></div><div class="p-screen">
+  <div class="statusbar"><span>8:51</span><span>78%</span></div>
+  <div class="x-btn">✕</div>
+  <div class="hero"><svg width="40" height="40" viewBox="0 0 24 24" fill="#5B5BD6"><path d="M11 2.5l1.75 5.75L18.5 10l-5.75 1.75L11 17.5 9.25 11.75 3.5 10l5.75-1.75z"/><path d="M18.6 14.4l.9 2.5 2.5.9-2.5.9-.9 2.5-.9-2.5-2.5-.9 2.5-.9z"/></svg></div>
+  <div class="pw-title">SnipStack Pro</div>
+  <div class="pw-sub">Save everything. Find it in seconds. Forever.</div>
+  <div class="feat"><div class="check">✓</div>Unlimited snippets (free plan caps at 15)</div>
+  <div class="feat"><div class="check">✓</div>Priority retrieval: pinned + most-used surface first</div>
+  <div class="feat"><div class="check">✓</div>Unlimited image &amp; file snippets</div>
+  <div class="feat"><div class="check">✓</div>Support an indie student developer</div>
+  <div style="height:6px"></div>
+  <div class="pkg">
+    <div><div class="pkg-name">Monthly</div></div>
+    <div class="pkg-price">US$9.99</div>
+  </div>
+  <div class="pkg">
+    <div><div class="pkg-name">Yearly</div></div>
+    <div class="pkg-price">US$79.99</div>
+  </div>
+  <div class="pkg">
+    <div><div class="pkg-name">Lifetime</div></div>
+    <div class="pkg-price">US$99.99</div>
+  </div>
+  <div class="restore">Restore purchases</div>
+  <div class="fine">Payment is charged to your store account. Subscription renews automatically unless cancelled at least 24 hours before the end of the current period. Manage or cancel in your store settings.</div>
+</div></div>
+</body></html>
