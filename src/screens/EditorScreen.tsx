@@ -21,6 +21,7 @@ import { usePro } from "../services/purchases";
 import { DEMO_AUTOPLAY } from "../demo/flags";
 import { useTheme } from "../theme";
 import { SnippetKind } from "../types";
+import { normalizeLinkUrl } from "../utils/links";
 
 const KINDS: { key: SnippetKind; label: string; icon: keyof typeof Ionicons.glyphMap }[] = [
   { key: "text", label: "Text", icon: "document-text-outline" },
@@ -70,6 +71,11 @@ export default function EditorScreen() {
       Alert.alert("Content required", "Add the text, link, image, or file you want to keep.");
       return;
     }
+    const savedContent = kind === "link" ? normalizeLinkUrl(content) : content;
+    if (savedContent === null) {
+      Alert.alert("Invalid link", "Use a valid http:// or https:// URL.");
+      return;
+    }
     if (!existing && !isPro && snippets.length >= FREE_LIMIT) {
       navigation.replace("Paywall", { reason: "limit" });
       return;
@@ -80,9 +86,9 @@ export default function EditorScreen() {
       .filter(Boolean);
 
     if (existing) {
-      update(existing.id, { kind, title: title.trim(), content, fileName, tags });
+      update(existing.id, { kind, title: title.trim(), content: savedContent, fileName, tags });
     } else {
-      add({ kind, title: title.trim(), content, fileName, tags, pinned: false });
+      add({ kind, title: title.trim(), content: savedContent, fileName, tags, pinned: false });
     }
     navigation.goBack();
   };
