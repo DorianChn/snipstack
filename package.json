@@ -7,7 +7,8 @@
     "start": "expo start --dev-client",
     "android": "expo run:android",
     "ios": "expo run:ios",
-    "ts:check": "tsc --noEmit"
+    "ts:check": "tsc --noEmit",
+    "test": "node --import tsx --test test/*.test.ts"
   },
   "dependencies": {
     "expo": "57.0.23",
@@ -28,8 +29,10 @@
     "expo-haptics": "~57.0.3"
   },
   "devDependencies": {
+    "@types/node": "^22.0.0",
     "typescript": "~5.9.0",
-    "@types/react": "~19.1.0"
+    "@types/react": "~19.1.0",
+    "tsx": "^4.19.0"
   },
   "private": true
 }

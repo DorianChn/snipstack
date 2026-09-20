@@ -2,6 +2,7 @@ import { create } from "zustand";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { Snippet } from "../types";
 import { uid } from "../utils/id";
+import { parseStoredSnippets } from "../utils/snippetStorage";
 import { DEMO_AUTOPLAY } from "../demo/flags";
 
 const STORAGE_KEY = "snipstack.snippets.v1";
@@ -39,7 +40,7 @@ export const useSnippets = create<SnippetsState>((set, get) => ({
     }
     try {
       const raw = await AsyncStorage.getItem(STORAGE_KEY);
-      const snippets: Snippet[] = raw ? JSON.parse(raw) : [];
+      const snippets = parseStoredSnippets(raw);
       set({ snippets, loaded: true });
     } catch {
       set({ snippets: [], loaded: true });
