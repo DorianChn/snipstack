@@ -3,6 +3,7 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 import { Snippet } from "../types";
 import { uid } from "../utils/id";
 import { parseStoredSnippets } from "../utils/snippetStorage";
+import { normalizeTags } from "../utils/tags";
 import { DEMO_AUTOPLAY } from "../demo/flags";
 
 const STORAGE_KEY = "snipstack.snippets.v1";
@@ -40,7 +41,10 @@ export const useSnippets = create<SnippetsState>((set, get) => ({
     }
     try {
       const raw = await AsyncStorage.getItem(STORAGE_KEY);
-      const snippets = parseStoredSnippets(raw);
+      const snippets = parseStoredSnippets(raw).map((snippet) => ({
+        ...snippet,
+        tags: normalizeTags(snippet.tags),
+      }));
       set({ snippets, loaded: true });
     } catch {
       set({ snippets: [], loaded: true });
@@ -49,7 +53,14 @@ export const useSnippets = create<SnippetsState>((set, get) => ({
 
   add: (input) => {
     const now = Date.now();
-    const snippet: Snippet = { ...input, id: uid(), createdAt: now, updatedAt: now, useCount: 0 };
+    const snippet: Snippet = {
+      ...input,
+      tags: normalizeTags(input.tags),
+      id: uid(),
+      createdAt: now,
+      updatedAt: now,
+      useCount: 0,
+    };
     const snippets = [snippet, ...get().snippets];
     set({ snippets });
     persist(snippets);
@@ -58,7 +69,14 @@ export const useSnippets = create<SnippetsState>((set, get) => ({
 
   update: (id, patch) => {
     const snippets = get().snippets.map((s) =>
-      s.id === id ? { ...s, ...patch, updatedAt: Date.now() } : s
+      s.id === id
+        ? {
+            ...s,
+            ...patch,
+            tags: patch.tags ? normalizeTags(patch.tags) : s.tags,
+            updatedAt: Date.now(),
+          }
+        : s
     );
     set({ snippets });
     persist(snippets);
@@ -89,7 +107,7 @@ export const useSnippets = create<SnippetsState>((set, get) => ({
 
 export function useAllTags(): string[] {
   const snippets = useSnippets((s) => s.snippets);
-  const set = new Set<string>();
-  snippets.forEach((s) => s.tags.forEach((t) => set.add(t)));
-  return Array.from(set).sort();
+  return normalizeTags(snippets.flatMap((snippet) => snippet.tags)).sort((a, b) =>
+    a.toLowerCase().localeCompare(b.toLowerCase())
+  );
 }

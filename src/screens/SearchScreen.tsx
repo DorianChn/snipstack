@@ -15,6 +15,7 @@ import { useSnippets, useAllTags } from "../store/useSnippets";
 import { useTheme } from "../theme";
 import SnippetCard from "../components/SnippetCard";
 import EmptyState from "../components/EmptyState";
+import { tagContains, tagMatches } from "../utils/tags";
 
 export default function SearchScreen() {
   const navigation = useNavigation<any>();
@@ -36,12 +37,12 @@ export default function SearchScreen() {
   const results = useMemo(() => {
     const q = query.trim().toLowerCase();
     return snippets.filter((s) => {
-      if (activeTag && !s.tags.includes(activeTag)) return false;
+      if (activeTag && !tagMatches(s.tags, activeTag)) return false;
       if (!q) return true;
       return (
         s.title.toLowerCase().includes(q) ||
         s.content.toLowerCase().includes(q) ||
-        s.tags.some((t) => t.toLowerCase().includes(q))
+        tagContains(s.tags, q)
       );
     });
   }, [snippets, query, activeTag]);
@@ -75,7 +76,7 @@ export default function SearchScreen() {
           contentContainerStyle={styles.tagRow}
         >
           {allTags.map((t) => {
-            const active = t === activeTag;
+            const active = activeTag !== null && tagMatches([t], activeTag);
             return (
               <TouchableOpacity
                 key={t}
