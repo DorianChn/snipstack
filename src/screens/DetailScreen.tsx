@@ -17,6 +17,7 @@ import * as Haptics from "expo-haptics";
 import { useSnippets } from "../store/useSnippets";
 import { useTheme } from "../theme";
 import { timeAgo } from "../utils/time";
+import { normalizeLinkUrl } from "../utils/links";
 
 export default function DetailScreen() {
   const navigation = useNavigation<any>();
@@ -52,6 +53,17 @@ export default function DetailScreen() {
         },
       },
     ]);
+  };
+
+  const openLink = () => {
+    const url = normalizeLinkUrl(snippet.content);
+    if (!url) {
+      Alert.alert("Invalid link", "This snippet does not contain a safe http:// or https:// URL.");
+      return;
+    }
+    Linking.openURL(url).catch(() => {
+      Alert.alert("Unable to open link", "The link could not be opened on this device.");
+    });
   };
 
   return (
@@ -101,11 +113,7 @@ export default function DetailScreen() {
             <Text
               style={[styles.content, { color: theme.text }]}
               selectable
-              onPress={
-                snippet.kind === "link"
-                  ? () => Linking.openURL(snippet.content).catch(() => {})
-                  : undefined
-              }
+              onPress={snippet.kind === "link" ? openLink : undefined}
             >
               {snippet.content}
             </Text>
