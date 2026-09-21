@@ -4,12 +4,17 @@ import { Snippet } from "../types";
 import { uid } from "../utils/id";
 import { parseStoredSnippets } from "../utils/snippetStorage";
 import { normalizeTags } from "../utils/tags";
+import { createWriteQueue } from "../utils/storageWriteQueue";
 import { DEMO_AUTOPLAY } from "../demo/flags";
 
 const STORAGE_KEY = "snipstack.snippets.v1";
 
 /** Free tier: up to 15 snippets. Pro (RevenueCat entitlement "pro"): unlimited. */
 export const FREE_LIMIT = 15;
+
+const persistQueue = createWriteQueue((serialized) =>
+  AsyncStorage.setItem(STORAGE_KEY, serialized)
+);
 
 interface SnippetsState {
   snippets: Snippet[];
@@ -27,7 +32,7 @@ interface SnippetsState {
 function persist(snippets: Snippet[]) {
   // In demo mode the store is ephemeral so every capture starts clean.
   if (DEMO_AUTOPLAY) return;
-  AsyncStorage.setItem(STORAGE_KEY, JSON.stringify(snippets)).catch(() => {});
+  persistQueue(JSON.stringify(snippets));
 }
 
 export const useSnippets = create<SnippetsState>((set, get) => ({
